@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>登陆</title>
+<link rel="stylesheet" href="./stylesheets/style.css">
+<link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="./stylesheets/style.css">
+<script type="text/javascript" src="/plugins/jquery/dist/jquery.js"></script>
+<script src="/plugins/angular/angular.js"></script>
+<script src="/js/supersized.3.2.7.min.js"></script>
+<script src="/js/supersized-init.js"></script>
+<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/controller.js"></script>
+<body>
+<div class="login-container" ng-app="loginApp" ng-controller="loginController">
+	<h1>登录</h1>
+	<form  method="post" id="loginForm" name="loginForm" ng-submit="postForm()">
+		<div>
+			<input class="name" name="name" type="text" placeholder="邮箱/用户名" ng-model="formData.name" ng-pattern="/(^[a-zA-Z][a-zA-Z0-9_]{4,11}$)|(^(\w+)(\.\w+)*@(\w+)((\.\w+))+$)/" required>
+			<div ng-cloak ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="error">邮箱/用户名不合法, 请重新输入</div>
+		</div>
+		<div>
+			<input  type="password" placeholder="密码" ng-model="formData.password" ng-pattern="/(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{5,}/" ng-maxlength="12" required>
+			<div ng-cloak ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="error">密码格式不正确</div>
+		</div>
+		<button id="submit" type="submit"  ng-disabled="loginForm.$invalid">登 陆</button>
+	</form>
+	<div class="login-failed">
+		<div ng-cloak ng-show="error">{{ error }}</div>
+	</div>
+	<a href="/" style="margin-left: 4px">
+		<button type="button" class="register-tis">游客登录</button>
+	</a>
+	<br>
+	<a href="/register">
+		<button type="button" class="register-tis">还有没有账号？</button>
+	</a>
+</div>
+</body>
+</html>

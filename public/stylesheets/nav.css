@@ -1,0 +1,34 @@
+.navbar {
+    background:rgba(222,222,222,.7);
+}
+.navbar-default .navbar-nav>li>a{
+    color: rgba(0,0,0,.5);!important;
+}
+.navbar-header img {
+    height: 50px;
+}
+.navbar-login {
+    text-align: left;
+}
+.navbar {
+    margin-bottom: 0px;
+    border: none;
+}
+.dropdown ul {
+    border: none;
+}
+.shop-ul li {
+    margin: 10px;
+    border-bottom: 1px dashed gray;
+}
+.but {
+    margin-right: 10px;
+    border: none;
+    color: white;
+    background: rgb(247,142,33);
+}
+#out {
+     width: 100px;!important;
+     text-align: center;
+     font-size: 15px;
+ }

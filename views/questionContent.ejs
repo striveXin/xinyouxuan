@@ -1,0 +1,21 @@
+<% question.forEach(function (questions) {%>
+<li class="row question">
+    <div class=" col-sm-9 col-md-8 headline">
+        <a href="/question/<%= questions.id%>"><i class="fa fa-smile-o"></i> <span><%= questions.title %></span></a>
+    </div>
+    <div class=" col-sm-3 col-md-4 into">
+        <button class="button"><a href="/question/<%= questions.id%>"><i class="fa fa-arrow-right"></i> 点击进入</a></button>
+    </div>
+</li>
+<% })%>
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="Content-ul">
+                <% for(var i=1; i <= count1;i++){%>
+                <button type="button" class="page"><%=i%></button>
+                <%  }%>
+            </ul>
+        </div>
+    </div>
+</div>

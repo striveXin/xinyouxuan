@@ -1,0 +1,61 @@
+
+<!DOCTYPE>
+<html>
+<head>
+    <meta  charset="UTF-8" >
+    <title>404页面</title>
+    <link href="../stylesheets/404.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/plugins/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            let h = $(window).height();
+            $('body').height(h);
+            $('.mianBox').height(h);
+            centerWindow(".tipInfo");
+        });
+
+        //2.将盒子方法放入这个方，方便法统一调用
+        function centerWindow(a) {
+            center(a);
+            //自适应窗口
+            $(window).bind('scroll resize',
+                function() {
+                    center(a);
+                });
+        }
+
+        //1.居中方法，传入需要剧中的标签
+        function center(a) {
+            let wWidth = $(window).width();
+            let wHeight = $(window).height();
+            let boxWidth = $(a).width();
+            let boxHeight = $(a).height();
+            let scrollTop = $(window).scrollTop();
+            let scrollLeft = $(window).scrollLeft();
+            let top = scrollTop + (wHeight - boxHeight) / 2;
+            let left = scrollLeft + (wWidth - boxWidth) / 2;
+            $(a).css({
+                "top": top,
+                "left": left
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="mianBox">
+    <img src="../images/yun0.png" alt="" class="yun yun0" />
+    <img src="../images/yun1.png" alt="" class="yun yun1" />
+    <img src="../images/yun2.png" alt="" class="yun yun2" />
+    <img src="../images/bird.png" alt="" class="bird" />
+    <img src="../images/san.png" alt="" class="san" />
+    <div class="tipInfo">
+        <div class="in">
+            <div class="textThis">
+                <h2>出错啦404！</h2>
+                <p><span>返回首页<a id="href" href="/">跳转</a></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

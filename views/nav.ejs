@@ -1,0 +1,121 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta  charset="UTF-8" >
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/plugins/simplemde-markdown-editor/dist/simplemde.min.css">
+    <link href="../stylesheets/base.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/nav.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/flexslider.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/templatemo_misc.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/templatemo_style.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/testimonails-slider.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="../images/favicon.ico">
+    <!--动态的引入某个页面的静态资源-->
+    <link rel="stylesheet" href="<%= resource %>" />
+    <script type="text/javascript" src="/plugins/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/plugins/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/javascripts/controller.js"></script>
+    <script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/dist/jquery.gmap3.min.js"></script>
+    <script type="text/javascript" src="/dist/plugins.js"></script>
+    <script type="text/javascript" src="/dist/main.js"></script>
+    <script type="text/javascript" src="/plugins/simplemde-markdown-editor/dist/simplemde.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#"><img src="/images/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+                <li><a href="/cate">美食总汇</a></li>
+                <li><a href="/good">精品选区</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        分享评论 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/life">生活分享</a></li>
+                        <li><a href="/question">问题总汇</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">联系我们</a></li>
+            </ul>
+            <ul class="nav navbar-nav  navbar-right">
+                <% if(user){%>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">购物车<i class="fa fa-shopping-cart"></i></a>
+                        <ul class="dropdown-menu shop-ul">
+                            <li class="clearfix">
+                                <div class="shop-name">
+                                    <span>西红柿</span>
+                                    <span class="fr">×1</span>
+                                </div>
+                                <div class="fr">
+                                    <span>￥20</span>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="shop-name">
+                                    <span>西红柿</span>
+                                    <span class="fr">×1</span>
+                                </div>
+                                <div class="fr">
+                                    <span>￥20</span>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="shop-name">
+                                    <span>西红柿</span>
+                                    <span class="fr">×1</span>
+                                </div>
+                                <div class="fr">
+                                    <span>￥20</span>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="shop-name">
+                                    <span>西红柿</span>
+                                    <span class="fr">×1</span>
+                                </div>
+                                <div class="fr">
+                                    <span>￥20</span>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <span>总金额：</span>
+                                <span class="fr">￥80</span>
+                            </li>
+                            <button class="but fr">确认支付</button>
+                        </ul>
+                    </li>
+                </ul>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i>&nbsp;<%= user.name%></a>
+                    <ul class="dropdown-menu"  id="out">
+                        <li><a href="/setting"><i class="fa fa-id-card"></i>个人信息</a></li>
+                        <li><a href="/logout"><i class="fa fa-sign-out"></i>退出登录</a></li>
+                    </ul>
+
+                </li>
+                <%}else {%>
+                <li class="navbar-login "> <a href="/login">登录</a></li>
+                <li class="navbar-login "> <a href="/register">注册</a> </li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>

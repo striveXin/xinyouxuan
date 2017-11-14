@@ -1,0 +1,32 @@
+<% include nav.ejs%>
+<div id="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-content">
+                    <h2>问题总汇</h2>
+                    <span>这里你可以查看所有的分享，发表你自己的意见</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section">
+                    <h2>发表评论</h2>
+                    <img src="images/under-heading.png" alt="" >
+                </div>
+            </div>
+        </div>
+        <p class="clearfix publish">
+            <a href="/create-question" class="fr">创建分享</a>
+        </p>
+        <ul class="questionContent">
+            <% include questionContent.ejs %>
+        </ul>
+    </div>
+</div>
+<% include footer.ejs%>

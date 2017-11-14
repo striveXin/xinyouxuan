@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>注册</title>
+<link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="./stylesheets/style.css">
+<script type="text/javascript" src="/plugins/jquery/dist/jquery.js"></script>
+<script src="/plugins/angular/angular.js"></script>
+<script src="/js/supersized.3.2.7.min.js"></script>
+<script src="/js/supersized-init.js"></script>
+<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/controller.js"></script>
+<body>
+<div class="register-container"  ng-app="registerApp" ng-controller="registerController">
+    <h1>注册</h1>
+    <form method="post" id="registerForm"  ng-submit="postForm()" name="regForm">
+        <div>
+            <input  type="name" placeholder="用户名" name="name" ng-model="formData.name"
+                   ng-minlength="5" ng-maxlength="12" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_]{4,11}$/" required>
+            <div ng-cloak ng-show="regForm.name.$invalid && !regForm.name.$pristine" class="error">用户名格式不符合/必须以字母开头</div>
+        </div>
+        <div>
+            <input  placeholder="密码" name="password" ng-model="formData.password"
+                   ng-pattern="/(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{5,}/" ng-maxlength="12" required>
+            <div ng-cloak ng-show="regForm.password.$invalid && !regForm.password.$pristine" class="error">密码格式不正确</div>
+        </div>
+        <div>
+            <input type="email" placeholder="邮箱" name="email" ng-model="formData.email"
+                   ng-pattern="/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/" required>
+            <div ng-cloak ng-show="regForm.email.$invalid && !regForm.email.$pristine" class="error">邮箱格式不正确</div>
+        </div>
+
+        <button id="submit" ng-disabled="regForm.$invalid" type="submit">注 册</button>
+    </form>
+    <div class="main-footer">
+        <div style="margin-bottom: 40px" class="alert alert-danger" ng-cloak ng-show="error">{{error}}</div>
+        <div class="alert-success hidden">注册成功,<span>5</span>秒后跳转,请注意查收邮件</div>
+    </div>
+    <a href="/login">
+        <button type="button" class="register-tis">已经有账号？</button>
+    </a>
+
+</div>
+
+</body>
+</html>

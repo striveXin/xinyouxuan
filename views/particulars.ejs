@@ -1,0 +1,86 @@
+<% include nav.ejs%>
+<div class="container" id="matter">
+    <div id="matter-head">
+        <ul>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h1 class="cc"><%= question.title %></h1>
+                        <img src="../images/under-heading.png" alt="" >
+                    </div>
+                </div>
+            </div>
+            <li class="par-2">
+                <h4 class="cc">
+                    <%= question.content%>
+                </h4>
+            </li>
+        </ul>
+    </div>
+    <div class="all-comments" id="matter-second">
+        <div class="view-comments">
+            <div class="comments">
+                <div class="author-thumb">
+                    <img src="../images/author-comment1.jpg" alt="">
+                </div>
+                <div class="comment-body">
+                    <h6>雅静</h6>
+                    <span class="date">2020/1/20 &nbsp;&nbsp;&nbsp;&nbsp;20:00</span>
+                    <a href="#" class="hidden-xs">回复</a>
+                    <p>这个蛋糕做起来很简单，给孩子们做了点，都说很好吃，希望有更多的更好吃的甜点做法给我们分享出来。</p>
+                </div>
+            </div>
+        </div>
+        <div class="replyed-form">
+            <div class="comments replyed">
+                <div class="author-thumb">
+                    <img src="../images/author-comment2.jpg" alt="">
+                </div>
+                <div class="comment-body">
+                    <h6>雪娴</h6>
+                    <span class="date">2020/1/20 &nbsp;&nbsp;&nbsp;&nbsp;21:02</span>
+                    <a href="#" class="hidden-xs">回复</a>
+                    <p>我有一个红糖蒸年糕的做法你可以去试试，原材料：糯米粉500克，红片糖450克，水250克。步骤： 1.红糖加水珠溶。 2.把糖水倒入糯米粉中，搅拌均匀。 3.把面糊倒入扫好油的方盘内蒸约1小时，出炉后放凉切件即成。</p>
+                </div>
+            </div>
+        </div>
+        <div class="view-comments">
+            <div class="comments">
+                <div class="author-thumb">
+                    <img src="../images/author-comment3.jpg" alt="">
+                </div>
+                <div class="comment-body">
+                    <h6>歆婷</h6>
+                    <span class="date">2020/1/19 &nbsp;&nbsp;&nbsp;&nbsp;17:00</span>
+                    <a href="#" class="hidden-xs">回复</a>
+                    <p>我来分享一个奇士小汤圆的做法，原材料：小磨糯米粉200克，枸杞10克，新奇士橙1个，调味料：精盐，白糖各适量，清水150克 步骤： 1.糯米粉和匀揉透； 2.新奇士橙去皮切粒，枸杞泡洗，糯米粉搓成小汤圆，入沸水煮熟。用凉水泡着；3.锅内注入清水，下入全部原料。用小火煮透，盛入小碗内即成。</p>
+                </div>
+            </div>
+        </div>
+        <div class="view-comments">
+            <div class="comments">
+                <div class="author-thumb">
+                    <img src="../images/author-comment4.jpg" alt="">
+                </div>
+                <div class="comment-body">
+                    <h6>心琪</h6>
+                    <span class="date">2020/1/19 &nbsp;&nbsp;&nbsp;&nbsp;17:00</span>
+                    <a href="#" class="hidden-xs">回复</a>
+                    <p>个人推荐西米火龙果，原材料：西米150克，火龙果1个。调味料：白糖100克，湿面粉20克，清水适量。步骤： 1.西米用开水泡透蒸熟，火龙果对半剖开，挖空起肉切粒； 2.锅烧热，注入清水，加入白砂糖.西米.火龙果粒一起煮开； 3.用面粉勾芡后盛入火龙果外壳内即可。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reply">
+        <textarea name="" id="#reply" cols="30" rows="10"></textarea>
+        <button class="fr" id="button">回复</button>
+    </div>
+</div>
+<% include footer.ejs%>
+<script>
+    const simplemde = new SimpleMDE({
+        element: $("#reply")[0] ,
+        status:false,
+        styleSelectedText:false,
+    });
+</script>
