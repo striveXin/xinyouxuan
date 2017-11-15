@@ -43,6 +43,12 @@ router.get('/question',question.question);
 router.get('/question1',question.question1)
 //分享详情
 router.get('/question/:id',question.particulars)
+//编辑问题的页面
+router.get('/question/:id/edit', auth.userRequired, question.edit);
+//编辑问题的行为
+router.post('/question/:id/edit', auth.userRequired, question.postEdit);
+//删除问题的行为
+router.get('/question/delete/:id', auth.userRequired, question.delete);
 //************************************用户***************************************
 //个人设置
 router.get('/setting',auth.userRequired,user.setting)

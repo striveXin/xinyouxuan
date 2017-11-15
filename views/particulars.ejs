@@ -10,6 +10,10 @@
                     </div>
                 </div>
             </div>
+            <% if(user){%>
+            <a class="editQuestion" href="/question/<%= question._id %>/edit"><span class="fa fa-edit"></span> 编辑</a>&#x3000;
+            <a questionId="<%= question._id %>" class="deleteQuestion" href="javascript:;"><span class="fa fa-remove"></span> 删除</a>
+            <%}%>
             <li class="par-2">
                 <h4 class="cc">
                     <%= question.content%>
@@ -83,4 +87,20 @@
         status:false,
         styleSelectedText:false,
     });
+    $(function () {
+        $('.deleteQuestion').click(function () {
+            var id = $('.deleteQuestion').attr('questionId');
+            $.ajax({
+                type:'GET',
+                url:`/question/delete/${id}`
+            }).then(data=>{
+                console.log(data)
+                if(data == 'success'){
+                    alert('删除成功');
+                    location.href='/question'
+                }
+            })
+        })
+    })
+
 </script>

@@ -220,6 +220,68 @@ questionApp.controller('questionController', ($scope, $http) => {
         })
     }
 })
+//编辑问题
+const editApp = angular.module('editApp', []);
+editApp.controller('editController', ($scope, $http) => {
+    $scope.isLegal = false
+    const simplemde = new SimpleMDE({
+        element: $("#question")[0] ,
+        status:false,
+        styleSelectedText:false,
+    });
+    let content = $('#question').attr('value');
+    simplemde.value(content);
+    //内容验证
+    simplemde.codemirror.on('change', function () {
+        if(simplemde.value().replace(/\s+/g, '').length >= 10 ) {
+            $scope.isLegal = true;
+            //传播一下
+            $scope.$apply();
+            $('.markdown-info').addClass('hide');
+        }
+        else if(simplemde.value().replace(/\s+/g, '').length < 10 ) {
+            $scope.isLegal = false;
+            $scope.$apply();
+            $('.markdown-info').removeClass('hide');
+        }
+    })
+    $scope.formData = {
+        category: $('.selected').attr('catagory'),
+        title: $('input[name=title]').val()
+    };
+    $scope.postForm = () => {
+        //首先拿到问题的内容
+        $scope.formData.content = simplemde.value();
+        let questionUser = $('main').attr('questionUser');
+        let userId = $('main').attr('userId');
+        console.log(questionUser, userId);
+        if(questionUser == userId) {
+            //发送
+            $http({
+                method: 'POST',
+                url: `/question/${$('main').attr('id')}/edit`,
+                data: $.param($scope.formData),
+                headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(data => {
+                if(typeof data.data === 'object') {
+                    window.location.href = data.data.url;
+                }
+                else {
+                    $scope.error = data.data;
+                    $('#errorbox').fadeIn();
+                    setTimeout(function () {
+                        $('#errorbox').fadeOut();
+                    }, 1000)
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+        else {
+            alert('您没有权限修改该文章!')
+        }
+    }
+})
 //分页
 $(document).on('click','.page',function () {
     $.get('/question1',{'page':$(this).html()}).then(data=>{

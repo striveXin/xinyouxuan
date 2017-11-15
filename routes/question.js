@@ -96,3 +96,83 @@ exports.particulars = (req,res,next)=>{
         })
     })
 }
+//编辑问题的处理函数
+exports.edit = (req, res, next) => {
+    let question_id = req.params.id;
+    Question.getQuestionById(question_id, (err, question) => {
+        res.render('edit', {
+            title: '编辑',
+            resource: mapping.edit,
+            categorys: setting.categorys,
+            question: question
+        })
+    })
+}
+//编辑行为的处理函数
+exports.postEdit = (req, res, next) => {
+    let question_id = req.params.id;
+    let title = validator.trim(req.body.title);
+    let category = validator.trim(req.body.category);
+    let content = validator.trim(req.body.content);
+    let error;
+    if(!validator.isLength(title, {min: 8, max: 30})) {
+        error = '标题长度不合法, 请重新输入';
+    }
+    if(!validator.isLength(content, {min: 10})) {
+        error = '问题长度不合法, 请重新输入';
+    }
+    if(error) {
+        return res.end(error);
+    }
+    else {
+        //验证成功后
+        Question.getQuestionById(question_id, (err, question) => {
+            if(err) {
+                return res.end(err);
+            }
+            question.category = category;
+            question.title = title;
+            question.content = content;
+            question.update_time = new Date();
+            question.save();
+        })
+        res.json({url: `/question/${question_id}`});
+    }
+}
+//删除行为的处理函数
+exports.delete = (req, res, next) => {
+    let user = req.session.user._id;
+    let id = req.params.id;
+    Question.findOne({'_id':id}).then(date=>{
+        if(user == date.author){
+           date.deleted = true;
+           date.save().then(success=>{
+               res.end('success')
+           }).catch(err=>{
+               res.end('err')
+           });
+        }
+
+    })
+
+    // let question_id = req.params.id;
+    // let user = req.session.user._id;
+    // Question.getQuestionById(question_id, (err, question) => {
+    //     if(err) {
+    //         return res.end(err);
+    //     }
+    //     if(question.author._id == user) {
+    //         //更改Question表deleted字段
+    //         question.deleted = true;
+    //         question.save();
+    //         //更改User表的回复数和发布文章数
+    //         question.author.reply_count -= question.comment_num;
+    //         question.author.article_count -= 1;
+    //         question.author.save();
+    //         return res.end('success');
+    //     }
+    //     else {
+    //         return res.end('err');
+    //     }
+    // })
+}

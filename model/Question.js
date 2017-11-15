@@ -118,7 +118,7 @@ QuestionSchema.statics = {
         Question.find({'author': author}).sort({'create_time': -1}).limit(limit).exec(callback);
     },
     getAllQuestion:(page,callback)=>{
-        Question.find().sort({'create_time': -1}).limit(5).skip(page).exec(callback);
+        Question.find({'deleted':false}).sort({'create_time': -1}).limit(5).skip(page).exec(callback);
     }
 }
 
